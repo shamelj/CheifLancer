@@ -1,0 +1,109 @@
+*{
+    font-family: 'poppins';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-position: center;
+    background-size: cover;
+    background-image: linear-gradient(rgba(40, 40, 40, 0.5),rgba(20, 20, 20, 0.2)),url(pexels-life-of-pix-67468.jpg);    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding-left: 9%;
+    padding-right: 9%;
+}
+
+.container1{
+    position: relative;
+    width: 50vw;
+    height: 50vh;
+    background-color: rgb(240, 245, 239);
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.container2{
+    position: absolute;
+    top:0;
+    left: 0px;;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+       
+
+}
+.imgcon{
+width: 50%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: top;
+overflow: hidden
+
+
+}
+img{
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
+    border-radius: 0 15px 15px 0 ;
+    
+}
+form{
+    margin : 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 40%;
+    min-width: 240px;
+    padding: 0 10px;
+}
+h2{
+    font-size: 35px;
+    color: rgb(35, 102, 35);
+    margin-bottom: 70px;
+}
+.inputf{
+    
+    width : 100%;
+    height: 50px;
+    margin: 10px 0;
+    border: 2px solid rgb(25, 114, 25);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+
+}
+.inputf i{
+    flex :1;
+    text-align: center;
+    color: #666;
+    font-size: 18;
+}
+.inputf input{
+    flex : 5;
+    background:none;
+    border:none;
+    outline: none;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    color:#444;
+}
+.btns{
+    display: flex;
+    width:100%;
+    justify-content:space-around;
+    
+}
+a{
+    
+}
+
+    
+
