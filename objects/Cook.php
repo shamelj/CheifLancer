@@ -9,7 +9,7 @@ public class Cook extends User{
 
     protected function toArray(){
         $tbr = parent::toArray();
-        $tbr["location"]=$this->location;
+        $tbr["location"] = $this->location;
     }
 
 }

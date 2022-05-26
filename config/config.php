@@ -11,18 +11,16 @@ class Database{
     private function __construct() {}
     
     public static function getConnection():PDO{
-        if(is_null(self::$conn)){
-            
-        try{
-            self::$conn=new PDO(self::DSN,self::USER,self::PASSWORD);
-            self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } catch (PDOException $e){
-                echo $e->getMessage();
+        if(is_null(self::$conn)){  
+            try{
+                self::$conn=new PDO(self::DSN,self::USER,self::PASSWORD);
+                self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                } catch (PDOException $e){
+                    echo $e->getMessage();
+            }catch(Exception $e){
+                return false;
             }
-        }catch(Exception $e){
-            return false;
         }
-
         return self::$conn;
     }
 }
