@@ -1,6 +1,6 @@
 <?php
-require_once "/config/config.php";
-require_once "/";
+
+require_once "./objects/factories/UserFactory.php";
 
 $accData = json_decode(file_get_contents("php://input"));
 $user = UserFactory::getUser($accData->usernameو $accData->password);

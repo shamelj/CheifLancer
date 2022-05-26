@@ -30,7 +30,5 @@ public abstract class User{
             "type"=> type(),
         );
     }
-    public function toJSON(){
-        return json_encode(toArray());
-    }
+    
 }
