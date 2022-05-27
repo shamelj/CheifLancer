@@ -17,30 +17,52 @@
 
 
     <form>
+        <div>
+            <!--usertype-->
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="customer"
+                    onclick="hideLocation()" checked>
+                <label class="form-check-label" for="customer">
+                    Customer
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="cook" onclick="showLocation()">
+                <label class="form-check-label" for="cook">
+                    Cook
+                </label>
+            </div>
+        </div>
         <div class="row ">
             <div class="col">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username" required>
             </div>
             <div class="col">
-                <label for="formFileSm" class="form-label">Profile Picture</label>
-                <input class="form-control form-control-sm" id="formFileSm" type="file">
-              </div>
+                <label for="picture" class="form-label">Profile Picture</label>
+                <input class="form-control form-control-sm" id="picture" type="file">
+            </div>
         </div>
         <div class="row">
             <div class="col">
                 <label for="firstName" class="form-label">First name</label>
-                <input type="text" class="form-control" id="firstname" required>
+                <input type="text" class="form-control" id="firstName" required>
             </div>
             <div class="col">
                 <label for="lastname" class="form-label">Last name</label>
-                <input type="text" class="form-control" id="lastname" required>
+                <input type="text" class="form-control" id="lastName" required>
             </div>
         </div>
         <div class="row">
             <div class="col-6">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="col-6">
+                <div id="locationBlock" style="display: none;">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" class="form-control" id="location" required>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -57,18 +79,21 @@
         </div>
         <div class="row">
             <div class="col-6">
-                <label for="phonenumber" class="form-label">Phone number</label>
-                <input type="tel" class="form-control" id="phonenumber" pattern="[0-9]{10}" required>
+                <label for="phone" class="form-label">Phone number</label>
+                <input type="tel" class="form-control" id="phone" pattern="[0-9]{10}" required>
             </div>
         </div>
         <!--submit button-->
-        <button  type="submit"  class="btn btn-outline-success" id="submit">Register</button>
+        <button type="button" class="btn btn-outline-success" id="submit" onclick="submitForm()">Register</button>
 
         <a class="btn btn-outline-primary" href="index.html" role="button">login</a>
+        <!--Error-->
+        <div id="error" style="margin: 10px;">
 
+        </div>
 
     </form>
-
+    <script src="register.js"></script>
 </body>
 
 </html>
