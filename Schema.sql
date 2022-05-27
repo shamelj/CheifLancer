@@ -92,3 +92,6 @@ CREATE table meal_picture(
     primary key(cook_username, meal_name,pic_no),
     FOREIGN key (cook_username, meal_name) REFERENCES meal(cook_username,name)
     );
+
+ALTER TABLE meal
+ADD COLUMN description varchar(65535);

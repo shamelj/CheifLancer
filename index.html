@@ -17,22 +17,26 @@
     <div class="container1">  
         <div class="container2">
             
-        <form action="/action_page.php">
+        <form id="login_form" action="./test.php">
             <h2>Sign up</h2>
             <div class="inputf">
                 <i class="fas fa fa-user"></i>
                 
-                <input type="text" placeholder="Enter Username" name="uname" required>
+                <input id="username" type="text" placeholder="Enter Username" name="uname" required>
             </div>
+
             <div class="inputf">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <input id="password" type="password" placeholder="Enter Password" name="psw" required>
             </div>
+
             <div  class="btns">
-                <button  type="submit"  class="btn btn-outline-success" id="submit">Login</button>  
+                <button  type="button" onclick="login();" class="btn btn-outline-success" id="submit">Login</button>  
               <a href="index-1.html" class="btn btn-outline-success" >Register</a>
             </div>
+
         </form>
+
         <div  class="imgcon">
             <img class="img-fluid" src="assets/img/Screenshot_112.jpg" alt="">
         </div>
@@ -43,7 +47,7 @@
     </div>
 </div>
 
-
+<script src="script.js"></script>
  
   
 </body>
