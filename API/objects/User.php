@@ -1,5 +1,5 @@
 <?php
-public abstract class User{
+abstract class User{
     private $email;
     private $firstName;
     private $lastName;
@@ -8,7 +8,7 @@ public abstract class User{
     private $profileImage;
     
     
-    public __construct($email, $firstName, $lastName, $password, $phoneNumber, $profileImage){
+    public function __construct($email, $firstName, $lastName, $password, $phoneNumber, $profileImage){
         $this->email = $email;
         $this->firstName=$firstName;
         $this->$lastName=$lastName;
@@ -17,7 +17,7 @@ public abstract class User{
         $this->profileImage=$profileImage;
     }
 
-    public static function type():string;
+    public static abstract function type():string;
 
     protected function toArray():array{
         return array(

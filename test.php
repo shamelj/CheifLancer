@@ -1,5 +1,5 @@
 <?php
-require_once "config/config.php";
+require_once "./API/config/config.php";
 /*
 $username='moawyah';
 $password='123456789';
@@ -20,10 +20,11 @@ echo "<br>";
 foreach($result as $val){
     echo "$val\t\t";
 }
-*/
 
+*/
 $accData = json_decode(file_get_contents("php://input"));
 
-//$massage = array('state'=>'ACCEPTED','body'=> array("username"=>$accData->username, password=>$accData->password ) );
-//echo json_encode($massage);
-echo json_encode(array('a'=>'gg'));
+$massage = array('state'=>'ACCEPTED','body'=> array("username"=>$accData->username, 'password'=>$accData->password ) );
+echo json_encode($massage);
+
+//echo json_encode(array('a'=>'gg'));

@@ -1,12 +1,12 @@
 <?php
-require_once ".../config/config.php";
+require_once "../../config/config.php";
 require_once "../Customer.php";
 require_once "../Cook.php";
+echo 'included user factory successfully';
+class UserFactory{
+    private function __construct(){}
 
-public class UserFactory{
-    private __construct(){}
-
-    public static getUser(string $username, string $password) {
+    public static function getUser(string $username, string $password) {
         try {
             $conn = Database::getConnection();
             $stmt->execute( array( ':username' => $username, ':password' => $password ) );

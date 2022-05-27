@@ -12,7 +12,7 @@ async function login() {
         body: JSON.stringify(acc)
     };
     //send the massage and get the response
-    let response = await fetch("./test.php", massage);
+    let response = await fetch("/CheifLancer/API/login.php", massage);
     let data = await response.json();
     console.log(data);
     /*
