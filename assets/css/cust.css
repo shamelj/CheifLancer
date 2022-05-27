@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    text-decoration: none;
+    text-transform: capitalize;
+    outline: none;
+    border: none;
+}
+header{
+    display: fixed;
+}
+.meals{
+    
+        display: flex;
+        justify-content:space-between;
+        width: 100%;
+        height: auto;
+        border-radius: 2px;
+        padding: 1rem;
+        color: #454545;
+        margin-top:10px;
+        font-size: 16px;
+        background-color: white;
+        border: 1px solid lightgray;
+        border-radius: 13px;
+      
+}
