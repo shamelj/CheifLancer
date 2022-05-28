@@ -1,7 +1,7 @@
 <?php
-require_once "../../config/config.php";
-require_once "../Customer.php";
-require_once "../Cook.php";
+require_once "C:\\xampp\htdocs\CheifLancer\API\config\config.php";
+require_once "C:\\xampp\htdocs\CheifLancer\API\objects\Customer.php";
+require_once "C:\\xampp\htdocs\CheifLancer\API\objects\Cook.php";
 echo 'included user factory successfully';
 class UserFactory{
     private function __construct(){}

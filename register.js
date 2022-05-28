@@ -62,7 +62,7 @@ async function submitForm() {
     if (!isCustomer.checked)
         account.location = locationEl.value;
 
-    const response = await fetch('/register', {
+    const response = await fetch('./API/register.php', {
         method: 'POST',
 
         headers: {
