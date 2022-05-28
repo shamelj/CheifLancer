@@ -2,21 +2,17 @@
 require_once "C:\\xampp\htdocs\CheifLancer\API\config\config.php";
 require_once "C:\\xampp\htdocs\CheifLancer\API\objects\Customer.php";
 require_once "C:\\xampp\htdocs\CheifLancer\API\objects\Cook.php";
-echo 'included user factory successfully';
 class UserFactory{
     private function __construct(){}
 
     public static function getUser(string $username, string $password) {
         try {
             $conn = Database::getConnection();
-            $stmt->execute( array( ':username' => $username, ':password' => $password ) );
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
             $getCookSQL = "select * from user natural join cook where username= :username AND pass= :password";
             $getCustomerSQL = "select * from user natural join customer where username= :username AND pass= :password";
             $stmt = $conn->prepare($getCookSQL);
-
-
+            $stmt->execute( array( ':username' => $username, ':password' => $password ) );
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $result = $stmt->fetch();
             if($result){    //is a cook
                 $tbr = new Cook($result['email'], $result['first_name'], $result['last_name'], 
