@@ -57,12 +57,13 @@ async function submitForm() {
         email: emailEl.value,
         password: passwordEl.value,
         type: isCustomer.checked ? 'customer' : 'cook',
+        phone:  phoneEl.value,
         picture: pictureEl.value
     }
     if (!isCustomer.checked)
         account.location = locationEl.value;
 
-    const response = await fetch('/register', {
+    const response = await fetch('./API/register.php', {
         method: 'POST',
 
         headers: {
@@ -71,22 +72,18 @@ async function submitForm() {
         body: JSON.stringify(account)
 
     });
-    const status = await response.status;
-    const message = await response.text();
-    console.log(status)
-    if (status === 200) {
-        console.log(message)
+    let data = await response.json();
+    if (data.status == 200) {
         loginErrorEl.innerHTML = `
         <div class="alert alert-success" role="alert">
-                ${message} You'll get directed to login page in 3 seconds.
+                Account created succesfully! You'll get directed to login page in 3 seconds.
               </div>
         `;
-        setTimeout(() => window.location.href = "/login.html", 3000);
-        window.location.href = "/index.html"
+        setTimeout(() => window.location.href = "./index.html", 3000);
     } else {
         loginErrorEl.innerHTML = `
         <div class="alert alert-danger" role="alert">
-        ${message}
+        ${data.body}
         </div>
         `;
     }

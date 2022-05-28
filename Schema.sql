@@ -95,3 +95,32 @@ CREATE table meal_picture(
 
 ALTER TABLE meal
 ADD COLUMN description varchar(65535);
+
+DELIMITER &&  
+CREATE PROCEDURE insert_customer ( in username varchar(255),
+    in pass varchar(18),
+    in email varchar(255),
+    in first_name varchar(50),
+    in last_name varchar(50),
+    in phone_number char(10),
+    in profile_img varchar(255))  
+BEGIN  
+    insert into user values (username,pass,email,first_name,last_name,phone_number,profile_img);  
+    insert into customer values (username);   
+END &&  
+DELIMITER ;
+
+DELIMITER &&  
+CREATE PROCEDURE insert_cook ( in username varchar(255),
+    in pass varchar(18),
+    in email varchar(255),
+    in first_name varchar(50),
+    in last_name varchar(50),
+    in phone_number char(10),
+    in profile_img varchar(255),
+    in location varchar(255))                           
+BEGIN  
+    insert into user values (username,pass,email,first_name,last_name,phone_number,profile_img);  
+    insert into cook values (username,location);   
+END &&  
+DELIMITER ;  
