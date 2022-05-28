@@ -53,9 +53,8 @@ margin: auto;
   }
   .details{
     font-family:  Times New Roman; 
-      width: 50%;
-      padding: 20px;
-      
+     width: 50%;
+     padding: 20px;   
   }
   @media  screen and (max-width : 600px) {
     .meal{
@@ -73,5 +72,4 @@ margin: auto;
      height: 400px;
      width: 100%;
     }
-   
     }

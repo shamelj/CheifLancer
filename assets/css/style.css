@@ -7,7 +7,7 @@
 body{
     background-position: center;
     background-size: cover;
-    background-image: linear-gradient(rgba(40, 40, 40, 0.5),rgba(20, 20, 20, 0.2)),url(pexels-life-of-pix-67468.jpg);    
+    background-image: linear-gradient(rgba(40, 40, 40, 0.5),rgba(20, 20, 20, 0.2)),url(assets/pexels-life-of-pix-67468.jpg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -101,8 +101,14 @@ h2{
     justify-content:space-around;
     
 }
-a{
-    
+@media  screen and (max-width : 600px) {
+.container1{
+    width: 80vw;
+}   
+img{
+    display: hidden;
+}
+
 }
 
     
