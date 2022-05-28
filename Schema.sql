@@ -124,3 +124,12 @@ BEGIN
     insert into cook values (username,location);   
 END &&  
 DELIMITER ;  
+
+DELIMITER &&  
+CREATE PROCEDURE delete_user ( in uname varchar(255))                           
+BEGIN  
+    delete from cook where username = uname; 
+    delete from customer where username = uname; 
+    delete from user where username = uname; 
+END &&  
+DELIMITER ;  
