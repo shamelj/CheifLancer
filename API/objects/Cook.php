@@ -7,7 +7,7 @@ class Cook extends User{
         return "Cook";
     }
 
-    protected function toArray():array{
+    public function toArray():array{
         $tbr = parent::toArray();
         $tbr["location"] = $this->location;
     }

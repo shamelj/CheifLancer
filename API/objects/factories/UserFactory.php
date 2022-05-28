@@ -8,8 +8,13 @@ class UserFactory{
     public static function getUser(string $username, string $password) {
         try {
             $conn = Database::getConnection();
-            $getCookSQL = "select * from user natural join cook where username= :username AND pass= :password";
-            $getCustomerSQL = "select * from user natural join customer where username= :username AND pass= :password";
+            $getCookSQL = "select username, pass, email, first_name, last_name, phone_number, profile_img, location ".
+            "from user natural join cook ".
+            "where username= :username AND pass= :password";
+
+            $getCustomerSQL = "select username, pass, email, first_name, last_name, phone_number, profile_img ".
+            "from user natural join customer ".
+            "where username= :username AND pass= :password";
             $stmt = $conn->prepare($getCookSQL);
             $stmt->execute( array( ':username' => $username, ':password' => $password ) );
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -20,9 +25,10 @@ class UserFactory{
                 $tbr->location = $result['location'];
                 return $tbr;
             }
-
             $stmt = $conn->prepare($getCustomerSQL);
+            $stmt->execute( array( ':username' => $username, ':password' => $password ) );
             $result = $stmt->fetch();
+
             if($result){
                 $tbr = new Customer($result['email'], $result['first_name'], $result['last_name'], 
                 $result['pass'], $result['phone_number'], $result['profile_img']);

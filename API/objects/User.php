@@ -19,15 +19,15 @@ abstract class User{
 
     public static abstract function type():string;
 
-    protected function toArray():array{
+    public function toArray():array{
         return array(
-            "email"=>$email,
-            "firstName"=>$firstName,
-            "lastName"=>$lastName,
-            "password"=>$password,
-            "phoneNumber"=>$phoneNumber,
-            "profileImage"=>$profileImage,
-            "type"=> type(),
+            "email"=>$this->email,
+            "firstName"=>$this->firstName,
+            "lastName"=>$this->lastName,
+            "password"=>$this->password,
+            "phoneNumber"=>$this->phoneNumber,
+            "profileImage"=>$this->profileImage,
+            "type"=> static::type(),
         );
     }
     
