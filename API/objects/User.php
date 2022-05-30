@@ -1,5 +1,6 @@
 <?php
 abstract class User{
+    private $username;
     private $email;
     private $firstName;
     private $lastName;
@@ -8,12 +9,13 @@ abstract class User{
     private $profileImage;
     
     
-    public function __construct($email, $firstName, $lastName, $password, $phoneNumber, $profileImage){
+    public function __construct($username, $email, $firstName, $lastName, $password, $phoneNumber, $profileImage){
         $this->email = $email;
+        $this->username = $username;
         $this->firstName=$firstName;
-        $this->$lastName=$lastName;
+        $this->lastName=$lastName;
         $this->password=$password;
-        $this->$phoneNumber=$phoneNumber;
+        $this->phoneNumber=$phoneNumber;
         $this->profileImage=$profileImage;
     }
 
@@ -21,6 +23,7 @@ abstract class User{
 
     public function toArray():array{
         return array(
+            "username"=>$this->username,
             "email"=>$this->email,
             "firstName"=>$this->firstName,
             "lastName"=>$this->lastName,

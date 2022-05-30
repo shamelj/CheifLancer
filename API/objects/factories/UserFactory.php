@@ -20,7 +20,7 @@ class UserFactory{
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $result = $stmt->fetch();
             if($result){    //is a cook
-                $tbr = new Cook($result['email'], $result['first_name'], $result['last_name'], 
+                $tbr = new Cook($result['username'], $result['email'], $result['first_name'], $result['last_name'], 
                 $result['pass'], $result['phone_number'], $result['profile_img']);
                 $tbr->location = $result['location'];
                 return $tbr;
@@ -28,9 +28,8 @@ class UserFactory{
             $stmt = $conn->prepare($getCustomerSQL);
             $stmt->execute( array( ':username' => $username, ':password' => $password ) );
             $result = $stmt->fetch();
-
-            if($result){
-                $tbr = new Customer($result['email'], $result['first_name'], $result['last_name'], 
+            if($result){    
+                $tbr = new Customer($result['username'], $result['email'], $result['first_name'], $result['last_name'], 
                 $result['pass'], $result['phone_number'], $result['profile_img']);
                 return $tbr;
             }
