@@ -12,12 +12,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     
 }
 .cont2{
     background-color: rgb(78, 145, 93);
     padding: 50px;
     margin-bottom: 250px;
+    border-radius: 20px;
+    opacity: 0.9;
 }
 
 input{
@@ -25,14 +28,17 @@ input{
     
 }
 
-img{
-    display: flex;
-    align-items: center;
-    background-color: aqua;
- }
+
 label{
     margin-left: 2px;
 }
 header{
     display: fixed;
+}
+#user-pic{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    background-image:url(24-248253_user-profile-default-image-png-clipart-png-download.png) ;
+    background-size: 100%;
 }
