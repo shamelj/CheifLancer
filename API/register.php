@@ -34,7 +34,7 @@ function upload_pic_to_database(){
         $tmp = explode('.',$_FILES['picture']['name']);
         $file_ext = strtolower(end($tmp));
         $req_time = $_SERVER['REQUEST_TIME'];
-        $pictures_path = 'C:\xampp\htdocs\Database\Profile_Pictures\\';
+        $pictures_path = 'C:\xampp\htdocs\CheifLancer\Database\Profile_Pictures\\';
         $temp_path = $_FILES['picture']['tmp_name'];
         $dest_path =$pictures_path.$req_time.'.'.$file_ext;
         move_uploaded_file($temp_path,$dest_path);
