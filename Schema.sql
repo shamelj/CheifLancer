@@ -133,3 +133,11 @@ BEGIN
     delete from user where username = uname; 
 END &&  
 DELIMITER ;  
+
+
+DELIMITER &&  
+CREATE PROCEDURE update_picture ( in uname varchar(255),in picture varchar(255) )                           
+BEGIN  
+    update user set profile_img = picture where username = uname;
+END &&  
+DELIMITER ;  

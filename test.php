@@ -1,5 +1,7 @@
 <?php
 require_once "./API/config/config.php";
+echo ($_SERVER['REQUEST_TIME']);
+
 /*
 $username='moawyah';
 $password='123456789';
@@ -22,9 +24,9 @@ foreach($result as $val){
 }
 
 */
-$accData = json_decode(file_get_contents("php://input"));
+/*$accData = json_decode(file_get_contents("php://input"));
 
 $massage = array('state'=>'ACCEPTED','body'=> array("username"=>$accData->username, 'password'=>$accData->password ) );
 echo json_encode($massage);
-
+*/
 //echo json_encode(array('a'=>'gg'));
