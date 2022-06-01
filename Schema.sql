@@ -141,3 +141,10 @@ BEGIN
     update user set profile_img = picture where username = uname;
 END &&  
 DELIMITER ;  
+
+DELIMITER &&  
+CREATE PROCEDURE get_users ()                           
+BEGIN  
+select * from user;
+END &&  
+DELIMITER ; 

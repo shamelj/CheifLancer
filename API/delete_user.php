@@ -13,7 +13,7 @@ try{
     echo $result;
     echo json_encode( array('status'=>'200') );
 }catch(Exception $e){
-    echo json_encode( array('status'=>'400','body'=> "User already exists"));
+    echo json_encode( array('status'=>'400','body'=> "Error occured"));
 }
 
 //echo json_encode( array('hola'=>'hey'));
