@@ -38,7 +38,7 @@ function upload_pic_to_database(){
         $temp_path = $_FILES['picture']['tmp_name'];
         $dest_path =$pictures_path.$req_time.'.'.$file_ext;
         move_uploaded_file($temp_path,$dest_path);
-        return $dest_path;
+        return $req_time.'.'.$file_ext;
     }
     return null;
 }

@@ -39,5 +39,16 @@ class UserFactory{
             return false;
         }
     }
+    public static function getAllUsers(){
+        $conn = Database::getConnection();
+        $getUsersSQL = 'call get_users()';
+        $stmt = $conn->query($getUsersSQL);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $users  = [];
+        foreach ($stmt as $row){
+            array_push($users,$row);
+        }
+        return $users;
+    }
 
 }
