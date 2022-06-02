@@ -39,7 +39,8 @@ class UserFactory{
             return false;
         }
     }
-    public static function getAllUsers(){
+    
+    public static function getAllUsers():array {
         $conn = Database::getConnection();
         $getUsersSQL = 'call get_users()';
         $stmt = $conn->query($getUsersSQL);
