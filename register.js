@@ -10,6 +10,44 @@ const confirmPasswordEl = document.getElementById('confirmPassword');
 const phoneEl = document.getElementById('phone');
 const submitBtn = document.getElementById('submit');
 const loginErrorEl = document.getElementById('error');
+const formEl = document.getElementById('registerForm');
+
+formEl.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const isValid = validateLogin();
+    console.log(isValid)
+    if (isValid != null) {
+        loginErrorEl.innerHTML = `
+        <div class="alert alert-danger" role="alert">
+        ${isValid}
+        </div>
+        `;
+        return;
+    }
+    const fData = new FormData(formEl);
+    const response = await fetch('./API/register.php', {
+        method: 'POST',
+        body: fData
+
+    });
+    let data = await response.json();
+    console.log(data)
+    if (data.status == 200) {
+        loginErrorEl.innerHTML = `
+        <div class="alert alert-success" role="alert">
+                Account created succesfully! You'll get directed to login page in 3 seconds.
+              </div>
+        `;
+        setTimeout(() => window.location.href = "./index.html", 3000);
+    } else {
+        loginErrorEl.innerHTML = `
+        <div class="alert alert-danger" role="alert">
+        ${data.body}
+        </div>
+        `;
+    }
+
+})
 
 function validateLogin() {
     if (usernameEl.value.length < 2)
@@ -39,7 +77,7 @@ function hideLocation() {
 function showLocation() {
     document.getElementById('locationBlock').style.display = 'block'
 }
-async function submitForm() {
+/*async function submitForm() {
     const isValid = validateLogin();
     console.log(isValid)
     if (isValid != null) {
@@ -57,12 +95,18 @@ async function submitForm() {
         email: emailEl.value,
         password: passwordEl.value,
         type: isCustomer.checked ? 'customer' : 'cook',
-        phone:  phoneEl.value,
+        phone: phoneEl.value,
         picture: pictureEl.value
     }
     if (!isCustomer.checked)
         account.location = locationEl.value;
 
+    const fData = new FormData(formEl);
+    const response = await fetch('./API/register.php', {
+        method: 'POST',
+        body: fData
+
+    });
     const response = await fetch('./API/register.php', {
         method: 'POST',
 
@@ -72,7 +116,8 @@ async function submitForm() {
         body: JSON.stringify(account)
 
     });
-    let data = await response.json();
+    let data = await response.Text();
+    console.log(data)
     if (data.status == 200) {
         loginErrorEl.innerHTML = `
         <div class="alert alert-success" role="alert">
@@ -87,4 +132,4 @@ async function submitForm() {
         </div>
         `;
     }
-}
+}*/
