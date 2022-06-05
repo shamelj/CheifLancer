@@ -148,3 +148,34 @@ BEGIN
 select * from user;
 END &&  
 DELIMITER ; 
+
+DELIMITER &&  
+CREATE PROCEDURE insert_meal (
+    in name varchar(50),
+    in cook_username varchar(255),
+    in price numeric(5,2),
+    in waiting_time time,
+    in description varchar(65535))                           
+BEGIN  
+insert into meal values(name,cook_username,price,waiting_time,description);
+END &&  
+DELIMITER ; 
+
+
+DELIMITER &&  
+CREATE PROCEDURE get_recommended_meals_for(in uname varchar(255))                           
+BEGIN  
+with followed_cooks as (select followed_username as username
+	      				from follows
+      					where follower_username=uname)
+(select *
+from meal
+where meal.cook_username in (select * from followed_cooks)
+limit 15)
+UNION
+(select *
+from meal
+where meal.cook_username not in (select * from followed_cooks)
+limit 5)
+;END &&  
+DELIMITER ; 

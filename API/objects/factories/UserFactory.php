@@ -40,6 +40,7 @@ class UserFactory{
         }
     }
     public static function getAllUsers(){
+        try{
         $conn = Database::getConnection();
         $getUsersSQL = 'call get_users()';
         $stmt = $conn->query($getUsersSQL);
@@ -48,7 +49,10 @@ class UserFactory{
         foreach ($stmt as $row){
             array_push($users,$row);
         }
-        return $users;
+        return $users;}
+        catch (PDOException $e) {
+            return false;
+        }
     }
 
 }
