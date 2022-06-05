@@ -1,9 +1,3 @@
-let cook = 'abu zant';
-let me = 'la7em 7alal';
-let de = 'very good lahem yes very nice yyyeees yeeees';
-let price = '55$';
-let waitingT = '16 days';
-let arrImage = ['https://img.freepik.com/free-photo/big-hamburger-with-double-beef-french-fries_252907-8.jpg?w=2000', 'https://images.everydayhealth.com/images/diet-nutrition/34da4c4e-82c3-47d7-953d-121945eada1e00-giveitup-unhealthyfood.jpg?sfvrsn=a31d8d32_0'];
 
 addMeal = (cookName, mealname, mprice, description, waitingT, arrImg) => {
     

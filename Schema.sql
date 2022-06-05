@@ -179,3 +179,14 @@ where meal.cook_username not in (select * from followed_cooks)
 limit 5)
 ;END &&  
 DELIMITER ; 
+
+DELIMITER &&  
+CREATE PROCEDURE get_meal_pictures(in uname varchar(255), in mname varchar(255))                           
+BEGIN  
+
+select pic_path
+from meal natural join meal_picture
+where cook_username=uname and meal_name=mname
+
+;END &&  `user`
+DELIMITER ; 
