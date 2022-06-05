@@ -4,7 +4,6 @@ async function login() {
         username: document.getElementById("username").value,
         password: document.getElementById("password").value
     };
-    //console.log(acc);
     
     const massage = {
         method: 'POST',
@@ -14,17 +13,25 @@ async function login() {
     //send the massage and get the response
     let response = await fetch("/CheifLancer/API/login.php", massage);
     let data = await response.json();
-    console.log(data);
-    /*
-    if (data.state === 'ACCEPTED') {      //if accepted save user data to 'account' in storage
-        let body = data.body;
-        let account = {username: body.username,
-                       password: body.password,
-                       profilePicSRC: body.profilePicSRC};
-        localStorage.setItem('account', JSON.stringify(account));
-        window.location.pathname = "/HeadManual/frontend/main/main.html";
-    } else {
+    if(data.state === 'ACCEPTED'){
+        let user=data.body;
+        
+        if(user.type === "Customer" ){
+            window.location = "/CheifLancer/custScreen/";
+        }else{
+            //waiting for cook homepage development
+            console.log(user);
+        }
+    }else if(data.state === "NO_MATCH"){
         alert("User not found, check username and password again please.");
     }
-    */
+
 }
+
+/*
+function setCookie(cName, cValue, exHours) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exHours*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = cName + "=" + cValue + ";" + expires + ";path=/";
+}*/

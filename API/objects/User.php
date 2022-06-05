@@ -1,15 +1,16 @@
 <?php
 abstract class User{
-    private $username;
-    private $email;
-    private $firstName;
-    private $lastName;
-    private $password;
-    private $phoneNumber;
+    private string $username;
+    private string $email;
+    private string $firstName;
+    private string $lastName;
+    private string $password;
+    private string $phoneNumber;
     private $profileImage;
     
     
-    public function __construct($username, $email, $firstName, $lastName, $password, $phoneNumber, $profileImage){
+    public function __construct(string $username, string $email, string $firstName, string $lastName,
+    string $password, string $phoneNumber, $profileImage){
         $this->email = $email;
         $this->username = $username;
         $this->firstName=$firstName;
@@ -34,4 +35,25 @@ abstract class User{
         );
     }
     
+    public function getUsername(): string{
+        return $this->username;
+    }
+    public function getEmail(): string{
+        return $this->email;
+    }
+    public function getFirstName(): string{
+        return $this->firstName;
+    }
+    public function getLastName(): string{
+        return $this->lastName;
+    }
+    public function getPassword(): string{
+        return $this->password;
+    }
+    public function getPhoneNumber(): string{
+        return $this->phoneNumber;
+    }
+    public function getProfileImage(){
+        return $this->profileImage;
+    }
 }
