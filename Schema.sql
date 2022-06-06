@@ -190,3 +190,12 @@ where cook_username=uname and meal_name=mname
 
 ;END &&  `user`
 DELIMITER ; 
+
+DELIMITER &&  
+CREATE PROCEDURE get_cook_meals(in cname varchar(255))                           
+BEGIN  
+	select * 
+	from meal
+    where cook_username = cname
+;END &&  
+DELIMITER ; 

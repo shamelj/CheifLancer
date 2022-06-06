@@ -7,7 +7,8 @@ try{
     $user = UserFactory::getUser($accData->username, $accData->password);
     if($user){
         echo json_encode( array('state'=>'ACCEPTED', 'body'=> $user->toArray() ) );
-        setcookie("user", $user->getUsername(), time()+3600 );
+        //setcookie("user", json_encode($user->toArray()), time()+3600 );
+        //specify cookie path
     }else{
         echo json_encode( array('state' => 'NO_MATCH', 'body' => array(null=>null) ) );
     }

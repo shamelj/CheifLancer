@@ -15,12 +15,11 @@ async function login() {
     let data = await response.json();
     if(data.state === 'ACCEPTED'){
         let user=data.body;
-        
+        setCookie("user",JSON.stringify(user),1);
         if(user.type === "Customer" ){
             window.location = "/CheifLancer/custScreen/";
         }else{
-            //waiting for cook homepage development
-            console.log(user);
+            window.location = "/CheifLancer/CookScreen/";
         }
     }else if(data.state === "NO_MATCH"){
         alert("User not found, check username and password again please.");
@@ -28,10 +27,9 @@ async function login() {
 
 }
 
-/*
 function setCookie(cName, cValue, exHours) {
     const d = new Date();
     d.setTime(d.getTime() + (exHours*60*60*1000));
     let expires = "expires="+ d.toUTCString();
     document.cookie = cName + "=" + cValue + ";" + expires + ";path=/";
-}*/
+}

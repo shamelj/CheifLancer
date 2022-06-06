@@ -1,7 +1,6 @@
 //addMeal = (cookName,mealname,mprice,description,waitingT,arrImg)
 
 async function showMeals(){
-    console.log("ayyoooo niggerrrsss");
     
     const massage = {
         method: 'POST',
@@ -13,7 +12,6 @@ async function showMeals(){
     let data = await response.json();
     let meals = data.body;
 
-    console.log(meals);
     for(const  meal of meals){
         //check attributes' names
         addMeal(meal.cookUsername, meal.name, meal.price, meal.description, meal.waitingTime, meal.pictures);
@@ -21,4 +19,10 @@ async function showMeals(){
 
 }
 
-window.onload = showMeals;
+window.onload = function (){
+
+    let user=JSON.parse(document.cookie.split('=')[1]);
+    console.log(user);
+    document.getElementById('profile_img').src = user.profileImage;
+    showMeals();
+};

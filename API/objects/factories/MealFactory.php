@@ -40,22 +40,49 @@ class MealFactory
                 array_push($tbr, $allRecords[$index]);
             }
             
-            $conn = Database::getConnection();
-            for ($i =0 ; $i<count($tbr) ; $i++) {
-                $meal=$tbr[$i];
-                $sql = "call get_meal_pictures(:cook_username, :meal_name)";
+            $sql = "call get_meal_pictures(:cook_username, :meal_name)";
+            foreach ($tbr as $meal) {
                 $stmt = $conn->prepare($sql);
                 $stmt->execute(array(':cook_username' => $meal->getCookUsername(), ':meal_name' => $meal->getName()));
                 $stmt->setFetchMode(PDO::FETCH_ASSOC);
                 while ($row = $stmt->fetch()) {
                     $meal->addPicture($row['pic_path']);
                 }
-                $tbr[$i]=$meal->toArray();
             }
-            return $tbr;
+            return $allRecords;
         } catch (Exception $e) {
             //echo $e->getMessage();
         }
         return [];
     }
+
+    public static function getCookMeals(string $cookUsername):array {
+        try {
+            $conn = Database::getConnection();
+            $sql = "call get_cook_meals(:username)";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute(array(':username' => $cookUsername));
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+            $allRecords = [];
+            while ($row = $stmt->fetch()) {
+                array_push($allRecords, self::toMealInstance($row));
+            }
+            
+            $sql = "call get_meal_pictures(:cook_username, :meal_name)";
+            foreach ($allRecords as $meal) {
+                $stmt = $conn->prepare($sql);
+                $stmt->execute(array(':cook_username' => $meal->getCookUsername(), ':meal_name' => $meal->getName()));
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                while ($row = $stmt->fetch()) {
+                    $meal->addPicture($row['pic_path']);
+                }
+            }
+            return $allRecords;
+        } catch (Exception $e) {
+            //echo $e->getMessage();
+        }
+        return [];
+    }
+
 }
