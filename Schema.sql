@@ -201,6 +201,22 @@ CREATE PROCEDURE update_user ( in _username varchar(255),
     in _phone_number char(10),
     in _profile_img varchar(255))                           
 BEGIN  
-    update user set  pass = _pass, email = _email, first_name = _first_name, last_name = _last_name, phone_number = _phone_number, profile_img = _profile_img where username = _username;
+    update user set  pass = _pass,
+        email = _email,
+        first_name = _first_name,
+        last_name = _last_name,
+        phone_number = _phone_number,
+        profile_img = _profile_img 
+        where username = _username;
 END &&  
+DELIMITER ; 
+
+
+DELIMITER &&  
+CREATE PROCEDURE get_cook_meals(in cname varchar(255))                           
+BEGIN  
+	select * 
+	from meal
+    where cook_username = cname
+;END &&  
 DELIMITER ; 

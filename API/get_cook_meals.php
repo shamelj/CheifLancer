@@ -1,4 +1,5 @@
 <?php
+
 require_once "C:\\xampp\htdocs\CheifLancer\API\objects\\factories\MealFactory.php";
 
 try{
@@ -7,7 +8,7 @@ try{
         die();
     }
     $user = json_decode($_COOKIE['user']);
-    $meals = MealFactory::getRecommendedMeals( $user->username );
+    $meals = MealFactory::getCookMeals( $user->username );
     $tbr=[];
     foreach ($meals as $meal){
         array_push($tbr, $meal->toArray());

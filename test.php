@@ -1,6 +1,9 @@
 <?php
-require_once "C:\\xampp\htdocs\CheifLancer\API\objects\\factories\UserFactory.php";
-$temp_users = UserFactory::getAllUsers();
-$users = [];
-foreach($temp_users as $user)
-array_push($users,$user.toArra);
+require_once "C:\\xampp\htdocs\CheifLancer\API\objects\\factories\MealFactory.php";
+
+$meals = MealFactory::getRecommendedMeals("moawyah");
+$tbr=[];
+foreach ($meals as $meal){
+    array_push($tbr, $meal->toArray());
+}
+echo json_encode($tbr);
