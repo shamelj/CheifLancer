@@ -10,18 +10,33 @@
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
     <link rel="stylesheet" href="/cheiflancer/assets/css/styleR.css">
 
-    <title>Edit user</title>
+    <title>Add user</title>
 </head>
 
 <body>
 
 
     <form id="registerForm">
-
+        <div>
+            <!--usertype-->
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" id="customer"
+                    onclick="hideLocation()" value="customer" checked>
+                <label class="form-check-label" for="customer">
+                    Customer
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" id="cook" value="cook" onclick="showLocation()">
+                <label class="form-check-label" for="cook">
+                    Cook
+                </label>
+            </div>
+        </div>
         <div class="row ">
             <div class="col">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" name="username" id="username" readonly required>
+                <input type="text" class="form-control" name="username" id="username" required>
             </div>
             <div class="col">
                 <label for="picture" class="form-label">Profile Picture</label>
@@ -54,12 +69,12 @@
             <!--password-->
             <div class="col-6">
                 <label for="password" class="form-label">Password</label>
-                <input type="text" class="form-control" name="password" id="password">
+                <input type="password" class="form-control" name="password" id="password">
             </div>
             <!--confirm password-->
             <div class="col">
                 <label for="confirmPassword" class="form-label">Confirm Password</label>
-                <input type="text" class="form-control" id="confirmPassword">
+                <input type="password" class="form-control" id="confirmPassword">
             </div>
         </div>
         <div class="row">
@@ -67,21 +82,18 @@
                 <label for="phone" class="form-label">Phone number</label>
                 <input type="tel" class="form-control" name="phone" id="phone" pattern="[0-9]{10}" required>
             </div>
-            <div class="col-6">
-                <img id='picturePreview' src="" alt="profile image">
-            </div>
         </div>
         <!--submit button-->
-        <button type="submit" class="btn btn-outline-success" id="submit">Update</button>
+        <button type="submit" class="btn btn-outline-success" id="submit">Add</button>
 
-        <a class="btn btn-outline-primary" href="dashboard.html" role="button">DashBoard</a>
+        <a class="btn btn-outline-primary" href="dashboard.html" role="button">Dashboard</a>
         <!--Error-->
         <div id="error" style="margin: 10px;">
 
         </div>
 
     </form>
-    <script src="edit_user.js"></script>
+    <script src="add_user.js"></script>
 </body>
 
 </html>

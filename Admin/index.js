@@ -1,52 +1,32 @@
-let usersTableEl = document.getElementById('usersTable');
-let users;
-window.onload = async () => {
-    usersTableEl = document.getElementById('usersTable');
-    const response = await fetch('../API/get_users.php', {
-        method: 'GET',
-    });
-    users = await response.json();
-    users.forEach((user) => appendRow(user));
+async function login() {
+    //get the info from the page and prepare the massege to the API
+    const acc = {
+        username: document.getElementById("username").value,
+        password: document.getElementById("password").value
+    };
 
-}
-
-function appendRow(user) {
-    usersTableEl.innerHTML += `
-    <tr id = "${user.username}" >
-                <td>${user.username}</td>
-                <td>${user.password}</td>
-                <td>${user.firstName}</td>
-                <td>${user.lastName}</td>
-                <td>${user.email}</td>
-                <td>${user.phoneNumber}</td>
-                <td><button class="btn btn-outline-primary" onclick="edit_user(this)">Edit</button>
-                 <button onclick = "delete_user(this)" class="btn btn-outline-danger">Delete</button></td>
-            </tr>
-    `;
-}
-async function delete_user(element) {
-    const rowEl = element.parentElement.parentElement;
-    const username = rowEl.id;
-    const response = await fetch('/cheiflancer/API/delete_user.php', {
+    const massage = {
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        method: 'POST',
-        body: JSON.stringify({
-            username
-        })
-    });
-    const data = await response.json();
-    rowEl.remove();
+        body: JSON.stringify(acc)
+    };
+    //send the massage and get the response
+    let response = await fetch("/CheifLancer/API/admin_login.php", massage);
+    let data = await response.json();
+    console.log(data);
+    if (data.state === 'ACCEPTED') {
+        window.location.href = "dashboard.html"
+    } else if (data.state === "NO_MATCH") {
+        alert("Admin not found, check username and password again please.");
+    }
 
 }
 
-function edit_user(element) {
-    const rowEl = element.parentElement.parentElement;
-    const username = rowEl.id;
-    const userInfo = users.find((user) => user.username ===username);
-    console.log(userInfo);
-    localStorage.setItem('userInfo',JSON.stringify(userInfo));
-    window.location.href = '/cheiflancer/admin/edit_user.html';
-
+function setCookie(cName, cValue, exHours) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exHours * 60 * 60 * 1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cName + "=" + cValue + ";" + expires + ";path=/";
 }

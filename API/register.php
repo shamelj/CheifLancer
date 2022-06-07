@@ -30,7 +30,7 @@ try{
     echo json_encode( array('status'=>'400','body'=> "User already exists" ) );
 }
 function upload_pic_to_database(){
-    if (isset($_FILES['picture'])){
+    if ($_FILES['picture']['tmp_name']!=''){
         $tmp = explode('.',$_FILES['picture']['name']);
         $file_ext = strtolower(end($tmp));
         $req_time = $_SERVER['REQUEST_TIME'];
