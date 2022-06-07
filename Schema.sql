@@ -190,3 +190,17 @@ where cook_username=uname and meal_name=mname
 
 ;END &&  `user`
 DELIMITER ; 
+
+
+DELIMITER &&  
+CREATE PROCEDURE update_user ( in _username varchar(255),
+    in _pass varchar(18),
+    in _email varchar(255),
+    in _first_name varchar(50),
+    in _last_name varchar(50),
+    in _phone_number char(10),
+    in _profile_img varchar(255))                           
+BEGIN  
+    update user set  pass = _pass, email = _email, first_name = _first_name, last_name = _last_name, phone_number = _phone_number, profile_img = _profile_img where username = _username;
+END &&  
+DELIMITER ; 

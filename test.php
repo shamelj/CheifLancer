@@ -1,4 +1,6 @@
 <?php
-require_once "./API/config/config.php";
-$arr = ["shamel" => [1 =>2,2,3]];
-echo json_encode($arr);
+require_once "C:\\xampp\htdocs\CheifLancer\API\objects\\factories\UserFactory.php";
+$temp_users = UserFactory::getAllUsers();
+$users = [];
+foreach($temp_users as $user)
+array_push($users,$user.toArra);

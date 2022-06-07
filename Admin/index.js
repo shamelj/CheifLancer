@@ -14,11 +14,11 @@ function appendRow(user) {
     usersTableEl.innerHTML += `
     <tr id = "${user.username}" >
                 <td>${user.username}</td>
-                <td>${user.pass}</td>
-                <td>${user.first_name}</td>
-                <td>${user.last_name}</td>
+                <td>${user.password}</td>
+                <td>${user.firstName}</td>
+                <td>${user.lastName}</td>
                 <td>${user.email}</td>
-                <td>${user.phone_number}</td>
+                <td>${user.phoneNumber}</td>
                 <td><button class="btn btn-outline-primary" onclick="edit_user(this)">Edit</button>
                  <button onclick = "delete_user(this)" class="btn btn-outline-danger">Delete</button></td>
             </tr>

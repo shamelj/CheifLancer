@@ -19,13 +19,13 @@ window.onload = ()=>{
     userInfo = JSON.parse(localStorage.getItem('userInfo'));
     console.log(userInfo);
     usernameEl.value = userInfo.username;
-    firstNameEl.value = userInfo.first_name;
-    lastNameEl.value = userInfo.last_name;
+    firstNameEl.value = userInfo.firstName;
+    lastNameEl.value = userInfo.lastName;
     emailEl.value = userInfo.email;
-    passwordEl.value = userInfo.pass;
-    confirmPasswordEl.value = userInfo.pass;
-    phoneEl.value = userInfo.phone_number;
-    picturePreviewEl.src = `/cheiflancer/database/profile_pictures/${userInfo.profile_img}`;
+    passwordEl.value = userInfo.password;
+    confirmPasswordEl.value = userInfo.password;
+    phoneEl.value = userInfo.phoneNumber;
+    picturePreviewEl.src = `/cheiflancer/database/profile_pictures/${userInfo.profileImage}`;
     picturePreviewEl.style.width= '150px';
     picturePreviewEl.style.height= '150px';
 
@@ -36,7 +36,7 @@ window.onload = ()=>{
 formEl.addEventListener('submit', async (e) => {
     e.preventDefault();
     const isValid = validateLogin();
-    console.log(isValid)
+    console.log(isValid);
     if (isValid != null) {
         loginErrorEl.innerHTML = `
         <div class="alert alert-danger" role="alert">
@@ -46,7 +46,8 @@ formEl.addEventListener('submit', async (e) => {
         return;
     }
     const fData = new FormData(formEl);
-    const response = await fetch('./API/register.php', {
+    fData.append('picture',userInfo.profileImage);
+    const response = await fetch('/cheiflancer/API/update_user.php', {
         method: 'POST',
         body: fData
 
@@ -56,7 +57,7 @@ formEl.addEventListener('submit', async (e) => {
     if (data.status == 200) {
         loginErrorEl.innerHTML = `
         <div class="alert alert-success" role="alert">
-                Account created succesfully! You'll get directed to login page in 3 seconds.
+                Account updated succesfully! You'll get directed to dashboard in 3 seconds.
               </div>
         `;
         setTimeout(() => window.location.href = "./index.html", 3000);
@@ -79,8 +80,6 @@ function validateLogin() {
         return 'Invalid Last Name!';
     else if (emailEl.value.length < 6)
         return 'Invalid Email';
-    else if (!isCustomer.value && locationEl.value.length < 6)
-        return 'Invalid Location';
     else if (passwordEl.value.length < 6)
         return 'Invalid PassWord!'
     else if (passwordEl.value != confirmPasswordEl.value)

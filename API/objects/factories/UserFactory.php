@@ -5,6 +5,16 @@ require_once "C:\\xampp\htdocs\CheifLancer\API\objects\Cook.php";
 class UserFactory{
     private function __construct(){}
 
+    private static function toUserInstance(array $row ){
+        return new Customer(
+            $row['username'],
+            $row['email'],
+            $row['first_name'],
+            $row['last_name'],
+            $row['pass'],
+            $row['phone_number'],
+            $row['profile_img']);
+    }
     public static function getUser(string $username, string $password) {
         try {
             $conn = Database::getConnection();
@@ -47,7 +57,8 @@ class UserFactory{
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $users  = [];
         foreach ($stmt as $row){
-            array_push($users,$row);
+            $user = self::toUserInstance($row);
+            array_push($users,$user);
         }
         return $users;}
         catch (PDOException $e) {
