@@ -125,15 +125,6 @@ BEGIN
 END &&  
 DELIMITER ;  
 
-DELIMITER &&  
-CREATE PROCEDURE delete_user ( in uname varchar(255))                           
-BEGIN  
-    delete from cook where username = uname; 
-    delete from customer where username = uname; 
-    delete from user where username = uname; 
-END &&  
-DELIMITER ;  
-
 
 DELIMITER &&  
 CREATE PROCEDURE update_picture ( in uname varchar(255),in picture varchar(255) )                           
@@ -220,3 +211,20 @@ BEGIN
     where cook_username = cname
 ;END &&  
 DELIMITER ; 
+
+
+DELIMITER &&  
+CREATE PROCEDURE delete_user ( in uname varchar(255))                           
+BEGIN  
+	delete from follows where follower_username = uname or followed_username = uname;
+    delete from message where cook_username = uname or customer_username = uname;
+    delete from meal_rating where cook_username = uname or customer_username = uname;
+    delete from `order` where cook_username = uname or customer_username = uname;
+    delete from meal_tag where cook_username = uname;
+    delete from meal_picture where cook_username = uname;
+    delete from meal where cook_username = uname;
+    delete from cook where username = uname; 
+    delete from customer where username = uname; 
+    delete from user where username = uname; 
+END &&  
+DELIMITER ;  
