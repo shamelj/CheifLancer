@@ -23,6 +23,6 @@ window.onload = function (){
 
     let user=JSON.parse(document.cookie.split('=')[1]);
     console.log(user);
-    document.getElementById('profile_img').src = user.profileImage;
+    document.getElementById('profile_img').src = "/CheifLancer/Database/Profile_Pictures/"+user.profileImage;
     showMeals();
 };

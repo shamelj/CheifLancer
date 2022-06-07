@@ -32,10 +32,10 @@ addMeal = (cookName,mealname,mprice,description,waitingT,arrImg) => {
     mealn.style.fontWeight="bold";
     price.style.fontSize="45"
     
-    pic1.style.backgroundImage="url('"+arrImg[0]+"')";
+    pic1.style.backgroundImage="url('/CheifLancer/Database/Profile_Pictures/"+arrImg[0]+"')";
     pic1.style.backgroundRepeat='no-repeat'
     if(arrImg[1]!=null){
-     pic2.style.background="url('"+arrImg[1]+"')";
+     pic2.style.background="url('/CheifLancer/Database/Profile_Pictures/"+arrImg[1]+"')";
      pic2.style.backgroundRepeat='no-repeat';
      pic.appendChild(pic2);
     }
@@ -89,7 +89,7 @@ window.onload=function(){
   
   let user=JSON.parse(document.cookie.split('=')[1]);
   console.log(user);
-  document.getElementById('profile_img').src = user.profileImage;
+  document.getElementById('profile_img').src = `/cheiflancer/database/profile_pictures/${user.profileImage}`;
 
   showMeals();
 

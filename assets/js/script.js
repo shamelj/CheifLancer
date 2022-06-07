@@ -25,10 +25,10 @@ addMeal = (cookName, mealname, mprice, description, waitingT, arrImg) => {
     price.style.fontSize = "45"
 
     if (arrImg.length>0) {
-        pic1.style.backgroundImage = "url('" + arrImg[0] + "')";
+        pic1.style.backgroundImage = "url('/CheifLancer/Database/Profile_Pictures/" + arrImg[0] + "')";
         pic1.style.backgroundRepeat = 'no-repeat'
         if (arrImg[1] != null) {
-            pic2.style.background = "url('" + arrImg[1] + "')";
+            pic2.style.background = "url('/CheifLancer/Database/Profile_Pictures/" + arrImg[1] + "')";
             pic2.style.backgroundRepeat = 'no-repeat';
             pic.appendChild(pic2);
         }
